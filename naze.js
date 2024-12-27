@@ -1,12 +1,6 @@
 process.on('uncaughtException', console.error)
 process.on('unhandledRejection', console.error)
 
-/*
-	* Create By Naze
-	* Follow https://github.com/nazedev
-	* Whatsapp : https://whatsapp.com/channel/0029VaWOkNm7DAWtkvkJBK43
-*/
-
 require('./settings');
 const fs = require('fs');
 const os = require('os');
@@ -816,29 +810,6 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
 				});
 			}
 			break
-			case 'sc': case 'script': {
-				await naze.sendMessage(m.chat, {
-					text: `https://github.com/nazedev/hitori\n⬆️ Itu Sc nya cuy`,
-					contextInfo: {
-						forwardingScore: 10,
-						isForwarded: true,
-						forwardedNewsletterMessageInfo: {
-							newsletterJid: my.ch,
-							serverMessageId: null,
-							newsletterName: 'Join For More Info'
-						},
-						externalAdReply: {
-							title: author,
-							body: 'Subscribe My YouTube',
-							thumbnail: fake.thumbnail,
-							mediaType: 2,
-							mediaUrl: my.yt,
-							sourceUrl: my.yt,
-						}
-					}
-				}, { quoted: m })
-			}
-			break
 			case 'donasi': case 'donate': {
 				m.reply('Donasi Dapat Melalui Url Dibawah Ini :\nhttps://saweria.co/naze')
 			}
@@ -1348,7 +1319,7 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
 				m.reply(mess.wait)
 				let media = await quoted.download()
 				let audio = await toAudio(media, 'mp4')
-				await naze.sendMessage(m.chat, { document: audio, mimetype: 'audio/mpeg', fileName: `Convert By Naze Bot.mp3`}, { quoted : m })
+				await naze.sendMessage(m.chat, { document: audio, mimetype: 'audio/mpeg', fileName: `Convert By Bot.mp3`}, { quoted : m })
 			}
 			break
 			case 'tovn': case 'toptt': case 'tovoice': {
@@ -1455,7 +1426,7 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
 			}
 			break
 			case 'ssweb': {
-				if (!text) return m.reply(`Example: ${prefix + command} https://github.com/nazedev/naze-md`)
+				if (!text) return m.reply(`Example: ${prefix + command} https://donatesuport.rf.gd`)
 				try {
 					let anu = 'https://' + text.replace(/^https?:\/\//, '')
 					await naze.sendMessage(m.chat, { image: { url: 'https://image.thum.io/get/width/1900/crop/1000/fullpage/' + anu }, caption: 'Done' }, { quoted: m })
@@ -1733,8 +1704,31 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
 				}
 			}
 			break
+			case 'sc': case 'script': {
+				await naze.sendMessage(m.chat, {
+					text: `https://wa.me/6285189297059\nwa itu untuk kontak pengembang sc`,
+					contextInfo: {
+						forwardingScore: 10,
+						isForwarded: true,
+						forwardedNewsletterMessageInfo: {
+							newsletterJid: my.ch,
+							serverMessageId: null,
+							newsletterName: 'Join For More Info'
+						},
+						externalAdReply: {
+							title: author,
+							body: 'Subscribe My YouTube',
+							thumbnail: fake.thumbnail,
+							mediaType: 2,
+							mediaUrl: my.yt,
+							sourceUrl: my.yt,
+						}
+					}
+				}, { quoted: m })
+			}
+			break
 			case 'tinyurl': case 'shorturl': case 'shortlink': {
-				if (!text || !isUrl(text)) return m.reply(`Example: ${prefix + command} https://github.com/nazedev/hitori`)
+				if (!text || !isUrl(text)) return m.reply(`Example: ${prefix + command} https://donatesuport.rf.gd`)
 				try {
 					let anu = await axios.get('https://tinyurl.com/api-create.php?url=' + text)
 					m.reply('Url : ' + anu.data)
@@ -1744,7 +1738,7 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
 			}
 			break
 			case 'git': case 'gitclone': {
-				if (!args[0]) return m.reply(`Example: ${prefix + command} https://github.com/nazedev/hitori`)
+				if (!args[0]) return m.reply(`Example: ${prefix + command} https://donatesuport.rf.gd`)
 				if (!isUrl(args[0]) && !args[0].includes('github.com')) return m.reply('Gunakan Url Github!')
 				let [, user, repo] = args[0].match(/(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i) || []
 				try {
@@ -2542,24 +2536,68 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
 			}
 			break
 			case 'kuismath': case 'math': {
-				const { genMath, modes } = require('./lib/math');
-				const inputMode = ['noob', 'easy', 'medium', 'hard','extreme','impossible','impossible2'];
-				if (iGame(kuismath, m.chat)) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!')
-				if (!text) return m.reply(`Mode: ${Object.keys(modes).join(' | ')}\nContoh penggunaan: ${prefix}math medium`)
-				if (!inputMode.includes(text.toLowerCase())) return m.reply('Mode tidak ditemukan!')
-				let result = await genMath(text.toLowerCase())
-				let { key } = await m.reply(`*Berapa hasil dari: ${result.soal.toLowerCase()}*?\n\nWaktu : ${(result.waktu / 1000).toFixed(2)} detik`)
-				kuismath[m.chat + key.id] = {
-					jawaban: result.jawaban,
-					mode: text.toLowerCase(),
-					id: key.id
-				}
-				await sleep(kuismath, result.waktu)
-				if (rdGame(m.chat + key.id)) {
-					m.reply('Waktu Habis\nJawaban: ' + kuismath[m.chat + key.id].jawaban)
-					delete kuismath[m.chat + key.id]
-				}
-			}
+			// Cek apakah grup adalah grup tertentu (misalnya Wild Craft)
+    if (m.chat === '120363303484552317@g.us') {
+        // Menu untuk grup khusus (grup Wild Craft)
+        await naze.sendMessage(m.chat, {
+            text: `*This command is banned in this group.*`,
+            contextInfo: {
+                forwardingScore: 10,
+                isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                    newsletterJid: my.yt,
+                    serverMessageId: null,
+                    newsletterName: 'this command is banned'
+                },
+                externalAdReply: {
+                    title: 'This Command is Forbidden',
+                    body: 'this command is banned',
+                    thumbnail: image4,
+                    mediaType: 2,
+                    mediaUrl: my.yt,
+                    sourceUrl: my.yt,
+                }
+            }	
+        }, { quoted: fkontak });
+    } else {
+			const { genMath, modes } = require('./lib/math');
+const inputMode = ['noob', 'easy', 'medium', 'hard', 'extreme', 'impossible', 'impossible2'];
+
+if (iGame(kuismath, m.chat)) return await naze.sendMessage(m.chat, { text: 'Masih Ada Sesi Yang Belum Diselesaikan!' }, { quoted: fkontak });
+if (!text) return await naze.sendMessage(m.chat, { text: `Mode: ${Object.keys(modes).join(' | ')}\nContoh penggunaan: ${prefix}math medium` }, { quoted: fkontak });
+if (!inputMode.includes(text.toLowerCase())) return await naze.sendMessage(m.chat, { text: 'Mode tidak ditemukan!' }, { quoted: fkontak });
+
+// Generate soal berdasarkan mode
+let result = await genMath(text.toLowerCase());
+
+// Pengaturan waktu berdasarkan mode
+let waktu;
+if (['noob', 'easy'].includes(text.toLowerCase())) {
+    waktu = 20000; // 20 detik
+} else if (text.toLowerCase() === 'medium') {
+    waktu = 30000; // 30 detik
+} else {
+    waktu = 60000; // 1 menit
+}
+
+let { key } = await naze.sendMessage(m.chat, { text: `*Berapa hasil dari: ${result.soal.toLowerCase()}*\n\nWaktu : ${(waktu / 1000).toFixed(2)} detik` }, { quoted: fkontak });
+
+kuismath[m.chat + key.id] = {
+    jawaban: result.jawaban,
+    mode: text.toLowerCase(),
+    id: key.id
+};
+
+// Tunggu waktu habis
+await sleep(waktu);
+
+// Cek apakah jawaban belum diberikan
+if (kuismath[m.chat + key.id]) {
+    await naze.sendMessage(m.chat, { text: `Waktu Habis\nJawaban: ${kuismath[m.chat + key.id].jawaban}` }, { quoted: fkontak });
+    delete kuismath[m.chat + key.id]; // Hapus data soal dari cache
+}
+    }
+}
 			break
 			
 			// Menu
@@ -2571,25 +2609,28 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
 					profile = fake.anonim
 				}
 				const menunya = `
-╭──❍「 *USER INFO* 」❍
-├ *Nama* : ${m.pushName ? m.pushName : 'Tanpa Nama'}
-├ *Id* : @${m.sender.split('@')[0]}
-├ *User* : ${isVip ? 'VIP' : isPremium ? 'PREMIUM' : 'FREE'}
-├ *Limit* : ${isVip ? 'VIP' : db.users[m.sender].limit }
-├ *Uang* : ${db.users[m.sender] ? db.users[m.sender].uang.toLocaleString('id-ID') : '0'}
-╰─┬────❍
-╭─┴─❍「 *BOT INFO* 」❍
-├ *Nama Bot* : ${botname}
-├ *Powered* : @${'0@s.whatsapp.net'.split('@')[0]}
-├ *Owner* : @${owner[0].split('@')[0]}
-├ *Mode* : ${naze.public ? 'Public' : 'Self'}
-├ *Prefix* :${db.set[botNumber].multiprefix ? '「 MULTI-PREFIX 」' : ' *'+prefix+'*' }
-╰─┬────❍
-╭─┴─❍「 *ABOUT* 」❍
-├ *Tanggal* : ${tanggal}
-├ *Hari* : ${hari}
-├ *Jam* : ${jam} WIB
-╰──────❍
+┏━🔥⌠ *USER INFO* ⌡🔥
+┃ *Nama* : ${m.pushName ? m.pushName : 'Tanpa Nama'}
+┃ *Id* : @${m.sender.split('@')[0]}
+┃ *User* : ${isVip ? 'VIP' : isPremium ? 'PREMIUM' : 'FREE'}
+┃ *Limit* : ${isVip ? 'VIP' : db.users[m.sender].limit }
+┃ *Uang* : ${db.users[m.sender] ? db.users[m.sender].uang.toLocaleString('id-ID') : '0'}
+┗━━━━━━🚀
+┏━━💎⌠ *BOT INFO* ⌡💎
+┃ *Nama Bot* : \_*${botname}*\_
+┃ *Powered* : @${'0@s.whatsapp.net'.split('@')[0]}
+┃ *Owner* : @${owner[0].split('@')[0]}
+┃ *Mode* : ${naze.public ? 'Public' : 'Self'}
+┃ *Prefix* :${db.set[botNumber].multiprefix ? '「 MULTI-PREFIX 」' : ' *'+prefix+'*' }
+┗━━━━━━🌊
+┏━━❄️⌠ *TENTANG* ⌡❄️
+┃ *Tanggal* : ${tanggal}
+┃ *Hari* : ${hari}
+┃ *Jam* : ${jam} WIB
+┃  *🅟*  : Fitur premium
+┃  *🅻*  : Mengurangi limit
+┗━━━━━━💧
+‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎
 ╭──❍「 *BOT* 」❍
 │${setv} ${prefix}profile
 │${setv} ${prefix}claim
@@ -2697,7 +2738,6 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
 ╭─┴❍「 *AI* 」❍
 │${setv} ${prefix}ai (query)
 │${setv} ${prefix}simi (query)
-│${setv} ${prefix}txt2img (query)
 ╰─┬────❍
 ╭─┴❍「 *ANIME* 」❍
 │${setv} ${prefix}waifu

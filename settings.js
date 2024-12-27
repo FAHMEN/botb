@@ -1,19 +1,13 @@
 const fs = require('fs');
 const chalk = require('chalk');
 
-/*
-	* Create By Naze
-	* Follow https://github.com/nazedev
-	* Whatsapp : https://whatsapp.com/channel/0029VaWOkNm7DAWtkvkJBK43
-*/
-
 //~~~~~~~~~~~~< GLOBAL SETTINGS >~~~~~~~~~~~~\\
 
-global.owner = ['6282113821188','0']
-global.packname = 'Bot WhatsApp'
-global.author = 'Nazedev'
-global.botname = 'Naze Bot'
-global.listprefix = ['+','!','.']
+global.owner = ['6287750494704']
+global.packname = 'Bot : 6289525926338'
+global.author = 'RTX404'
+global.botname = 'RTX404BOT'
+global.listprefix = ['+','!']
 global.listv = ['•','●','■','✿','▲','➩','➢','➣','➤','✦','✧','△','❀','○','□','♤','♡','◇','♧','々','〆']
 global.tempatDB = 'database.json'
 global.pairing_code = true
@@ -27,10 +21,10 @@ global.fake = {
 }
 
 global.my = {
-	yt: 'https://youtube.com/c/Nazedev',
-	gh: 'https://github.com/nazedev',
-	gc: 'https://chat.whatsapp.com/EqMTCcxdCZgHUJNl5KooCr',
-	ch: '120363250409960161@newsletter',
+	yt: 'https://donatesuport.rf.gd',
+	gh: 'https://donatesuport.rf.gd',
+	gc: 'https://chat.whatsapp.com/yourowngroup',
+	ch: 'yourownchannel@newsletter',
 }
 
 global.limit = {
